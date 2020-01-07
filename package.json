@@ -1,0 +1,20 @@
+{
+  "name": "cenit-snippets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "scripts": {
+    "start": "node bin/cli.js"
+  },
+  "author": "Yoandry Pacheco Aguila <yoandrypa@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "dateformat": "^3.0.3",
+    "node-watch": "^0.5.5",
+    "promptly": "^2.0.0",
+    "request": "^2.87.0"
+  }
+}
