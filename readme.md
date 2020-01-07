@@ -5,7 +5,7 @@ Is a development tool to download and update the snippets of codes from CenitIO.
 # Installation
 
 ```bash
-npm install -g @cenit-io/cenit-snippets
+npm install -g cenit-io/cenit-snippets
 ```
 
 # Help
