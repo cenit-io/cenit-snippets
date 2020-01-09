@@ -34,5 +34,5 @@ Usage: cenit-snippets [options]
 # Run
 
 ```
-cenit-snippets -k KKKKKKKKKK -t TTTTTTTTTTTTTTTTTTTT -o "./development" -s "default,owner" -n "^(eCAPI|OMNAv2|Ov2.*)$" -u https://cenit.io
+cenit-snippets -k KKKKKKKKKK -t TTTTTTTTTTTTTTTTTTTT -o "./development" -s "default,owner" -n "^(eCAPIv1|OMNAv2|Ov2.*)$" -u https://cenit.io
 ```
