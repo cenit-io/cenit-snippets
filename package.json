@@ -10,11 +10,11 @@
   "author": "Yoandry Pacheco Aguila <yoandrypa@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "dateformat": "^3.0.3",
     "node-watch": "^0.5.5",
-    "promptly": "^2.0.0",
-    "request": "^2.87.0"
+    "promptly": "^2.0.0"
   }
 }
