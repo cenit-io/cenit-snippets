@@ -6,7 +6,7 @@ let program = require('commander'),
     dateFormat = require('dateformat'),
     baseTask = require('../libs/base_task');
 
-program.version('1.0.0')
+program.version('1.1.0')
     .requiredOption('-u, --base-url,    [baseUrl]', 'Set CenitIO base URL', 'https://cenit.io')
     .requiredOption('-k, --key,         [key]', 'Set CenitIO tenant key', process.env.X_TENANT_ACCESS_KEY)
     .requiredOption('-t, --token,       [token]', 'Set CenitIO tenant token', process.env.X_TENANT_ACCESS_TOKEN)
