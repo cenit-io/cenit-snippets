@@ -1,14 +1,14 @@
-#cenit-snippets
+# cenit-snippets
 
 Is a development tool to download and update the snippets of codes from CenitIO.
 
-# Installation
+## Installation
 
 ```bash
 npm install -g cenit-io/cenit-snippets
 ```
 
-# Help
+## Help
 
 ```bash
 cenit-snippets -h
@@ -19,20 +19,30 @@ Usage: cenit-snippets [options]
 
   Options:
 
-    -h, --help                    output usage information
-    -V, --version                 output the version number
-    -u, --url,   [url]            Set CenitIO base URL
-    -k, --key,   [key]            Set CenitIO tenant key
-    -t, --token, [token]          Set CenitIO tenant token
-    -p, --tenant, [tenant]        Set CenitIO tenant name
-    -n, --namespace, [namespace]  Set CenitIO namespace
-    -o, --out,   [out]            Set output path
-    -s, --origins,   [origin]     Set data origins
+  -V, --version                   output the version number
+  -u, --base-url,    [baseUrl]    Set CenitIO base URL (default: "https://cenit.io")
+  -k, --key,         [key]        Set CenitIO tenant key (default: process.env.X_TENANT_ACCESS_KEY)
+  -t, --token,       [token]      Set CenitIO tenant token (default: process.env.X_TENANT_ACCESS_TOKEN)
+  -n, --namespace,   [namespace]  Set CenitIO namespace (default: "Basic")
+  -p, --tenant,      [tenant]     Set CenitIO tenant name
+  -o, --out-path,    [outPath]    Set output path
+  -s, --origins,     [origin]     Set data origins (default: "default,owner")
+  -h, --help                      display help for command
 
 ```
 
-# Run
+## Environments
+
+You can create the ** `.env` ** file in your working directory and set the key and token.
+ 
+
+```bash
+X_TENANT_ACCESS_KEY=***************
+X_TENANT_ACCESS_TOKEN=*****************
+```
+
+## Run
 
 ```
-cenit-snippets -k KKKKKKKKKK -t TTTTTTTTTTTTTTTTTTTT -o "./development" -s "default,owner" -n "^(eCAPIv1|OMNAv2|Ov2.*)$" -u https://cenit.io
+cenit-snippets -k "KKKK" -t "TTTT" -o "./development" -s "default,owner" -n "^(eCAPIv1|OMNAv2|Ov2.*)$"
 ```
