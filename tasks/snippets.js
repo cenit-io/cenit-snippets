@@ -25,9 +25,10 @@ program.version('1.1.0')
             start: function () {
                 let startTime = new Date();
 
-                if (!this.existsSync(options.outPath)) this.mkdirSync(options.outPath);
-
                 this.getSnippets((items) => {
+
+                    if (!this.existsSync(options.outPath)) this.mkdirSync(options.outPath);
+
                     items.forEach((snippet) => {
                         let outPath = path.join(options.outPath, snippet.namespace, snippet.type),
                             file = path.join(outPath, snippet.name);
