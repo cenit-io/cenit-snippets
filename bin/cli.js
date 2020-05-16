@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 
-var snippets = require('../lib/snippets');
+let program = require('commander'),
+    dotenv = require('dotenv');
 
-snippets.startWatch();
+dotenv.config();
 
+require('../libs/colors');
+require('../tasks/snippets');
+
+program.parse(process.argv);

@@ -11,10 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
-    "colors": "^1.1.2",
-    "commander": "^2.9.0",
+    "colors": "^1.4.0",
+    "commander": "^5.1.0",
     "dateformat": "^3.0.3",
-    "node-watch": "^0.5.5",
-    "promptly": "^2.0.0"
+    "dotenv": "^8.2.0",
+    "extend": "^3.0.2",
+    "node-watch": "^0.6.4",
+    "promptly": "^3.0.3"
   }
 }
