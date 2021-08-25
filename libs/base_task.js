@@ -1,8 +1,13 @@
-let axios = require('axios'),
+const axios = require('axios'),
+  https = require('https'),
   util = require('util'),
   path = require('path'),
   fs = require('fs'),
   extend = require('extend');
+
+const agent = new https.Agent({
+  rejectUnauthorized: false
+});
 
 module.exports = (options) => {
   return {
@@ -69,7 +74,8 @@ module.exports = (options) => {
             method: 'GET',
             baseURL: options.baseUrl + '/api/v2/',
             headers: headers,
-            params: params
+            params: params,
+            httpsAgent: agent
           }).then((response) => {
             if (response.data.total_pages === 0) return done(items);
 
@@ -79,9 +85,7 @@ module.exports = (options) => {
             if (response.data.total_pages > page) return request(page + 1);
 
             done(items);
-          }).catch(function (error) {
-            throw error;
-          });
+          }).catch(this.renderError);
         };
 
       request(1);
@@ -91,22 +95,24 @@ module.exports = (options) => {
       console.info(util.format("INIT UPLOAD UPDATED FILE: %s", filename).warn);
 
       let paths = filename.split('/');
+      let headers = extend({}, this.getBaseHeaders(), {
+        'X-Parser-Options': JSON.stringify({ primary_fields: ['namespace', 'name'] })
+      });
 
       data = extend({
-        namespace: paths[paths.length - 3], name: paths[paths.length - 1], _primary: ['namespace', 'name']
+        namespace: paths[paths.length - 3], name: paths[paths.length - 1],
       }, data)
 
       axios({
         url: servicePath,
         method: 'POST',
         baseURL: options.baseUrl + '/api/v2/',
-        headers: this.getBaseHeaders(),
-        data: JSON.stringify(data)
+        headers: headers,
+        data: JSON.stringify(data),
+        httpsAgent: agent
       }).then(function (response) {
         console.info(util.format("DONE UPLOAD UPDATED FILE: %s", filename));
-      }).catch(function (error) {
-        console.error(error);
-      });
+      }).catch(this.renderError);
     },
 
     getAlgorithms: function (done) {
@@ -135,6 +141,14 @@ module.exports = (options) => {
       let code = fs.readFileSync(filename).toString();
 
       this.sendItem('setup/snippet', { code: code }, filename);
+    },
+
+    renderError: function(error) {
+      if (error.response && error.response.data) {
+        console.error(error.response.data.summary || error.response.data);
+      } else {
+        throw error;
+      }
     }
   }
 }
