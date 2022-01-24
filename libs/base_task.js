@@ -23,7 +23,7 @@ module.exports = (options) => {
       return {
         namespace: JSON.stringify({ '$regex': options.namespace.replace(/,/g, '|') }),
         origin: JSON.stringify({ "$in": options.origins.replace(/\s/g, '').split(',') }),
-        updated_at: JSON.stringify({ '$gt': this.getLastUpdated() })
+        updated_at: JSON.stringify({ '$gt': this.getLastUpdated() }),
       }
     },
 
@@ -118,23 +118,23 @@ module.exports = (options) => {
     getAlgorithms: function (done) {
       let headers = { 'X-Render-Options': JSON.stringify({ embedding: 'snippet' }) };
 
-      this.getItems('setup/algorithm', {}, headers, 'name', 'algorithms', done)
+      this.getItems('setup/algorithm', {}, headers, 'updated_at', 'algorithms', done)
     },
 
     getDataTypes: function (done) {
       let headers = { 'X-Render-Options': JSON.stringify({ embedding: 'snippet' }) };
 
-      this.getItems('setup/json_data_type', {}, headers, 'name', 'json_data_types', done)
+      this.getItems('setup/json_data_type', {}, headers, 'updated_at', 'json_data_types', done)
     },
 
     getTranslators: function (done) {
       let headers = { 'X-Render-Options': JSON.stringify({ embedding: 'snippet' }) };
 
-      this.getItems('setup/translator', {}, headers, 'name', 'translators', done)
+      this.getItems('setup/translator', {}, headers, 'updated_at', 'translators', done)
     },
 
     getSnippets: function (done) {
-      this.getItems('setup/snippet', {}, {}, 'name', 'snippets', done)
+      this.getItems('setup/snippet', {}, {}, 'updated_at', 'snippets', done)
     },
 
     sendSnippet: function (filename) {
