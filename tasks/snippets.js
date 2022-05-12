@@ -43,7 +43,7 @@ program.version('1.1.0')
 
           console.info('------------------- WATCHING SNIPPETS FILES -------------------');
           watch(options.outPath, { recursive: true }, (eventType, filename) => {
-            const exclude = /(\.|LAST-UPDATED-DATE)|(___jb_tmp___|~|\.bak|\.bck)$/;
+            const exclude = /(^\.|LAST-UPDATED-DATE)|(___jb_tmp___|~|\.bak|\.bck)$/;
             if (eventType === 'update' && !filename.match(exclude)) this.sendSnippet(filename)
           });
         });
