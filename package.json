@@ -10,7 +10,7 @@
   "author": "Yoandry Pacheco Aguila <yoandrypa@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "colors": "^1.4.0",
     "commander": "^5.1.0",
     "dateformat": "^3.0.3",
